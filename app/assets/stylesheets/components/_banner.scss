@@ -1,0 +1,23 @@
+.banner {
+  background-image: url("banner_johnw");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.banner-text {
+  color: white;
+  margin-left: 40px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+.banner-text h1 {
+  font-size: 70px;
+  font-weight: 800;
+}
+.banner-text p {
+  font-size: 20px;
+  font-weight: 600;
+}

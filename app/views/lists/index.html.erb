@@ -1,0 +1,16 @@
+<div class="banner">
+  <div class="banner-text">
+    <h1>Watch List</h1>
+    <p>Listez vos film préféré sur un seul et même site</p>
+  </div>
+</div>
+
+
+<h1>List</h1> <%= link_to "create your list", new_list_path %>
+  <ol>
+  <% @lists.each do |list| %>
+   <li><%= list.name %></li>
+   <%= link_to "details", list_path(list) %>
+
+  <% end %>
+</ol>
