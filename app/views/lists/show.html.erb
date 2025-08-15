@@ -8,7 +8,8 @@
     Film : <%= bookmark.movie.title %><br>
     Commentaire : <%= bookmark.comment %>
   </p>
-   <%= button_to "X", list_bookmark_path(@list, bookmark), %>
+   <%= button_to "X", list_bookmark_path(@list, bookmark),  method: :delete,
+        data: { turbo_confirm: "Es-tu sûr de vouloir supprimer ce bookmark ?" } %>
 <% end %>
 
 <%= link_to "back to list", lists_path %>
