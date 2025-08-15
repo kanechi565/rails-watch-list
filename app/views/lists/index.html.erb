@@ -1,16 +1,66 @@
 <div class="banner">
   <div class="banner-text">
     <h1>Watch List</h1>
-    <p>Listez vos film préféré sur un seul et même site</p>
+    <p>Listez vos films préférés sur un seul et même site</p>
   </div>
 </div>
 
 
-<h1>List</h1> <%= link_to "create your list", new_list_path %>
-  <ol>
-  <% @lists.each do |list| %>
-   <li><%= list.name %></li>
-   <%= link_to "details", list_path(list) %>
 
+<div class="card-container">
+  <% @lists.each do |list| %>
+    <div class="card-trip">
+      <% if list.photos.any? %>
+        <%= cl_image_tag list.photos.first.key, height: 200, width: 400, crop: :fill, class: "card-photo" %>
+      <% else %>
+        <div class="card-photo" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); display: flex; align-items: center; justify-content: center;">
+          <span style="color: #666; font-size: 1.2rem;">Aucune photo</span>
+        </div>
+      <% end %>
+
+      <div class="card-trip-infos">
+        <div class="card-main">
+          <h2><%= list.name %></h2>
+        </div>
+
+        <div class="card-actions">
+          <%= link_to "Détails", list_path(list), class: "btn-details" %>
+
+          <%= button_to "Supprimer", list_path(list),
+                        method: :delete,
+                        data: { turbo_confirm: "Êtes-vous sûr ?" },
+                        class: "btn-danger" %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ol>
+</div>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+  </div>
+</div>
+<%# <ol>
+<% @lists.each do |list| %>
+  <%# <li><%= list.name</li> %>
+  <%# <%= link_to "détails", list_path(list) %>
+
+
+    <%# <% list.photos.each do |photo| %>
+      <%# <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
+  <%# <% end %>
+
+  <%# <%= button_to "Supprimer cette liste", list_path(list), %>
+              <%# method: :delete,
+              data: { turbo_confirm: "Êtes-vous sûr de vouloir supprimer cette liste ?" },
+              class: "btn btn-danger" %>
+<%# <% end %>
+<%# </ol>  %>

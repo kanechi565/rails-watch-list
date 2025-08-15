@@ -19,11 +19,15 @@ class ListsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to lists_path, notice: "La liste a été supprimée avec succès."
+  end
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, photos: [])
   end
 
   def set_list
